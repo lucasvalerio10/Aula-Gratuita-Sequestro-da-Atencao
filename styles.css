@@ -1,0 +1,270 @@
+/* =============================================================
+   RESET & BASE
+   ============================================================= */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 10px;
+  font-family: 'Open Sans', sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  height: -webkit-fill-available;
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+body {
+  color: rgba(0, 0, 0, 0.87);
+  background: #000;
+  min-width: 320px;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  font-size: 10px;
+}
+
+body.preload * {
+  -webkit-transition: none !important;
+  transition: none !important;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+b, strong { font-weight: bold; }
+i, em     { font-style: italic; }
+s         { text-decoration: line-through; }
+
+/* =============================================================
+   SCROLLBAR CUSTOM (fiel ao original)
+   ============================================================= */
+::-webkit-scrollbar             { width: 6px; height: 6px; background-color: #f9f9f9; }
+::-webkit-scrollbar-track       { background-color: #f9f9f9; }
+::-webkit-scrollbar-thumb       { background-color: rgba(0,0,0,0.24); border-radius: 6px; }
+::-webkit-scrollbar-thumb:hover { background-color: rgba(0,0,0,0.38); }
+
+/* =============================================================
+   CONTAINER CENTRAL
+   Desktop: 980px centrado
+   Mobile: 360px
+   ============================================================= */
+#site {
+  min-width: 980px;
+  overflow: hidden;
+}
+
+.centralizar {
+  position: relative;
+  width: 980px;
+  margin: 0 auto;
+  box-sizing: border-box;
+  text-align: left;
+}
+
+/* =============================================================
+   BLOCO 1 — BARRA DE TOPO (COUNTDOWN)
+   Fundo vermelho (#ef4444), texto branco, altura 65px desktop
+   ============================================================= */
+.bloco-topo {
+  width: 100%;
+  background-color: #ef4444;
+  border: 0;
+  overflow: visible;
+  min-height: 65px;
+  display: flex;
+  align-items: center;
+}
+
+.bloco-topo .centralizar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 0;
+  min-height: 65px;
+}
+
+#barra-topo-texto {
+  font-size: 13px;
+  color: #fff;
+  font-weight: bold;
+  text-align: center;
+  line-height: 1.6;
+}
+
+#barra-topo-texto s {
+  color: #fff;
+}
+
+/* =============================================================
+   BLOCO 2 — PLAYER DE VÍDEO
+   Fundo preto (#000), altura mínima para comportar o player
+   ============================================================= */
+.bloco-player {
+  width: 100%;
+  background-color: #000;
+  border: 0;
+  overflow: visible;
+  /* Altura mínima preserva o espaço mesmo antes do player carregar */
+  min-height: 869px;
+  display: flex;
+  align-items: flex-start;
+  padding-top: 40px;
+  padding-bottom: 40px;
+}
+
+.bloco-player .centralizar {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 0;
+}
+
+/* Wrapper do player — mesmo posicionamento do original:
+   left: 237px, top: 40px, width: 507px no container 980px */
+#player-wrapper {
+  width: 507px;
+  margin: 0 auto;
+  position: relative;
+}
+
+/* Garante que o custom element vturb ocupe 100% */
+#player-wrapper vturb-smartplayer {
+  display: block;
+  width: 100%;
+  margin: 0 auto;
+}
+
+/* Placeholder visual para quando o player ainda não foi inserido */
+#player-wrapper .placeholder-player {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  background: #111;
+  border: 2px dashed #333;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #555;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 14px;
+  text-align: center;
+  border-radius: 4px;
+}
+
+/* =============================================================
+   BLOCO 3 — RODAPÉ
+   Fundo preto (#000), altura 207px desktop
+   ============================================================= */
+.bloco-rodape {
+  width: 100%;
+  background-color: #000;
+  border: 0;
+  overflow: visible;
+  min-height: 207px;
+  display: flex;
+  align-items: center;
+}
+
+.bloco-rodape .centralizar {
+  padding: 24px 0;
+}
+
+/* Linha separadora (border-bottom azul-acinzentado) */
+.linha-separadora {
+  width: 496px;
+  border-bottom: 1px solid #a3bac6;
+  margin: 0 auto 20px auto;
+}
+
+/* Texto do rodapé */
+#footer-texto {
+  width: 400px;
+  margin: 0 auto;
+  text-align: center;
+  opacity: 1;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+.texto-cinza {
+  color: #91999d;
+}
+
+/* =============================================================
+   RESPONSIVIDADE MOBILE (max-width: 800px)
+   Fiel ao comportamento original do GreatPages
+   ============================================================= */
+@media all and (max-width: 800px) {
+
+  #site {
+    min-width: 360px;
+  }
+
+  .centralizar {
+    width: 360px;
+  }
+
+  /* Topo mobile: 63px de altura */
+  .bloco-topo {
+    min-height: 63px;
+  }
+
+  .bloco-topo .centralizar {
+    min-height: 63px;
+    padding: 8px 10px;
+  }
+
+  #barra-topo-texto {
+    font-size: 12px;
+  }
+
+  /* Player mobile: ocupa quase toda a largura, altura proporcional */
+  .bloco-player {
+    min-height: 864px;
+    padding-top: 11px;
+    padding-bottom: 20px;
+  }
+
+  .bloco-player .centralizar {
+    width: 360px;
+  }
+
+  #player-wrapper {
+    width: 361px;
+    margin: 0 auto;
+  }
+
+  /* Rodapé mobile: 191px */
+  .bloco-rodape {
+    min-height: 191px;
+  }
+
+  .bloco-rodape .centralizar {
+    width: 360px;
+  }
+
+  .linha-separadora {
+    width: 240px;
+    margin-left: 60px;
+  }
+
+  #footer-texto {
+    width: 340px;
+    margin: 0 10px;
+  }
+}
+
+/* =============================================================
+   UTILITÁRIOS
+   ============================================================= */
+.esconder { display: none !important; }
